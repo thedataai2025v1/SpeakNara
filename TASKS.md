@@ -49,7 +49,8 @@
 ### P1-T2: Frontend project scaffold (Next.js + shadcn/ui)
 
 - **Branch**: `feat/P1-T2-frontend-scaffold` ✅ Merged 2026-11-10
-- **Tests**: lint passes, scaffold test passes
+- **Test branch**: `feat/P1-T2-frontend-tests` ✅ Merged 2026-11-10 (PR #2)
+- **Tests**: 6/6 passing (vitest + jsdom), lint clean
 - [x] Next.js 14 + TypeScript + Tailwind CSS + shadcn/ui scaffold
 - [x] Supabase browser client with createBrowserClient
 - [x] Login and register pages with client-side auth forms
@@ -528,3 +529,12 @@
 - [ ] P6-T4: Render deployment config
 - [ ] P6-T5: Error handling + logging
 - [ ] P6-T6: Session detail page
+ 
+ # #   C o m p l e t e d   T a s k s  
+  
+ |   T a s k   |   B r a n c h   |   M e r g e d   |   T e s t s   |  
+ | - - - - - - | - - - - - - - - | - - - - - - - - | - - - - - - - |  
+ |   P 1 - T 1 :   B a c k e n d   S c a f f o l d   |    e a t / P 1 - T 1 - b a c k e n d - s c a f f o l d   |   2 0 2 6 - 1 1 - 1 0   |   3 / 3   p y t e s t ,   l i n t / f o r m a t   O K   |  
+ |   P 1 - T 2 :   F r o n t e n d   S c a f f o l d   |    e a t / P 1 - T 2 - f r o n t e n d - s c a f f o l d   |   2 0 2 6 - 1 1 - 1 0   ( P R   # 1 )   |   s c a f f o l d   +   l i n t   O K   |  
+ |   P 1 - T 2 :   F r o n t e n d   T e s t s   |    e a t / P 1 - T 2 - f r o n t e n d - t e s t s   |   2 0 2 6 - 1 1 - 1 0   ( P R   # 2 )   |   6 / 6   v i t e s t ,   l i n t   c l e a n   |  
+ 
