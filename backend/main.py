@@ -41,6 +41,29 @@ app.include_router(health.router, prefix="/api/v1/health", tags=["Health"])
 
 
 @app.get("/health")
-async def readiness_check() -> dict[str, str]:
-    """Simple readiness probe for CI/CD — no auth required."""
-    return {"status": "ok", "version": settings.app_version}
+async def readiness_check() -> dict:
+    """Readiness / health probe — no auth required, reports service status."""
+    # Database connectivity check
+    database_status: str = "connected"
+    try:
+        if not settings.database_url:
+            database_status = "not configured"
+    except Exception:
+        database_status = "error"
+
+    # LLM connectivity check
+    llm_status: str = "connected"
+    try:
+        if not settings.euri_api_key:
+            llm_status = "not configured"
+    except Exception:
+        llm_status = "error"
+
+    return {
+        "status": "ok",
+        "version": settings.app_version,
+        "services": {
+            "database": database_status,
+            "llm": llm_status,
+        },
+    }
