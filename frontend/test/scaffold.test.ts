@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 
 describe('Frontend Scaffold', () => {
-  const frontendDir = path.join(process.cwd(), 'frontend');
+  const frontendDir = process.cwd();
   
   it('has required configuration files', () => {
     const requiredFiles = [
