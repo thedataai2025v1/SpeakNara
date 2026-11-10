@@ -506,8 +506,8 @@
 - [x] P1-T2: Frontend scaffold (Next.js + shadcn/ui) (feat/P1-T2-frontend-scaffold, merged 2026-11-10)
 - [ ] P1-T3: Database migrations + seed data
 - [x] P1-T4: Auth middleware + JWT verification (feat/P1-T4-auth-middleware, merged 2026-11-10)
-- [ ] P1-T5: Health check endpoint
-- [ ] P1-T6: CI pipeline
+- [x] P1-T5: Health check endpoint (feat/P1-T5-health-endpoint, merged 2026-11-10)
+- [x] P1-T6: CI pipeline (GitHub Actions) (feat/P1-T6-ci-pipeline, merged 2026-11-10)
 - [ ] P2-T1: Audio upload + file validation
 - [ ] P2-T2: Whisper transcription
 - [ ] P2-T3: Audio metrics extraction
