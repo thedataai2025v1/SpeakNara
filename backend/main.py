@@ -7,7 +7,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.api.endpoints import health
+from backend.api.endpoints import audio_upload, health
 from backend.core.settings import settings
 
 
@@ -38,6 +38,7 @@ app.add_middleware(
 
 # Routers
 app.include_router(health.router, prefix="/api/v1/health", tags=["Health"])
+app.include_router(audio_upload.router, prefix="/api/v1/audio", tags=["Audio"])
 
 
 @app.get("/health")
