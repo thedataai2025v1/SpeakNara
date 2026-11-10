@@ -87,15 +87,16 @@
 
 ### P1-T4: Auth middleware + JWT verification
 
-- **Branch**: `feat/P1-T4-auth-middleware`
+- **Branch**: `feat/P1-T4-auth-middleware` ✓ merged
 - **Files**: `backend/core/auth.py`, `backend/api/deps.py`
 - **Description**: JWT verification middleware for FastAPI that validates Supabase JWTs. Dependency injection to get current user.
 - **Tests required**:
-  - `test_auth.py`: valid JWT returns user, expired/invalid JWT returns 401, admin-only route rejects non-admin
+  - `test_auth.py`: 13 tests — valid JWT returns user, expired/invalid JWT returns 401, admin-only route rejects non-admin
 - **Acceptance criteria**:
-  - Verify JWT using Supabase `SUPABASE_JWT_SECRET`
-  - FastAPI dependency `get_current_user()` returns user dict
-  - `require_admin()` dependency raises HTTPException(403) for non-admins
+  - [x] Verify JWT using Supabase `SUPABASE_JWT_SECRET`
+  - [x] FastAPI dependency `get_current_user()` returns user dict
+  - [x] `require_admin()` dependency raises HTTPException(403) for non-admins
+  - [x] 13/13 tests pass
 - **Lines**: ~80
 
 ---
