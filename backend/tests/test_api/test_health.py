@@ -1,4 +1,5 @@
 """Test health endpoint."""
+
 from httpx import ASGITransport, AsyncClient
 
 
