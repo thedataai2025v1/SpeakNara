@@ -505,7 +505,7 @@
 - [x] P1-T1: Backend scaffold + Supabase config (feat/P1-T1-backend-scaffold, merged 2026-11-10)
 - [x] P1-T2: Frontend scaffold (Next.js + shadcn/ui) (feat/P1-T2-frontend-scaffold, merged 2026-11-10)
 - [ ] P1-T3: Database migrations + seed data
-- [ ] P1-T4: Auth middleware + JWT verification
+- [x] P1-T4: Auth middleware + JWT verification (feat/P1-T4-auth-middleware, merged 2026-11-10)
 - [ ] P1-T5: Health check endpoint
 - [ ] P1-T6: CI pipeline
 - [ ] P2-T1: Audio upload + file validation
