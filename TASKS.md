@@ -138,9 +138,11 @@
 
 ### P2-T1: Audio upload + file validation
 
-- **Branch**: `feat/P2-T1-audio-upload`
-- **Files**: `backend/api/endpoints/audio.py`, `backend/services/audio_upload.py`
-- **Description**: Handle multipart audio upload. Validate format (WebM/Opus, WAV, MP3), size (<50MB), duration (<5 min).
+- **Branch**: `feat/P2-T1-audio-upload` ✅ Merged 2026-11-10
+- **Commit**: `60d0bb2`
+- **Files**: `backend/services/audio_upload.py`, `backend/api/endpoints/audio_upload.py`
+- **Tests**: 16/16 passing
+- **Description**: Handle multipart audio upload. Validate format (WAV, MP3, M4A, OGG, WebM), size (<50MB), MIME type. Auth required.
 - **Tests required**:
   - `test_audio_upload.py`: rejects oversized files, rejects unsupported formats, accepts valid audio, validates duration
 - **Acceptance criteria**:
@@ -153,9 +155,11 @@
 
 ### P2-T2: Whisper transcription (faster-whisper)
 
-- **Branch**: `feat/P2-T2-whisper-transcription`
-- **Files**: `backend/services/whisper_service.py`
-- **Description**: Transcribe audio using faster-whisper (local, free). Return transcript with word-level timestamps.
+- **Branch**: `feat/P2-T2-whisper-transcription` ✅ Merged 2026-11-10
+- **Commit**: `ca27759`
+- **Files**: `backend/services/transcription.py`
+- **Tests**: 15/15 passing
+- **Description**: Transcribe audio using faster-whisper (local, free). Return transcript with word-level timestamps. Convert non-WAV via pydub.
 - **Tests required**:
   - `test_whisper_service.py`: transcribe a short test audio file, verify transcript is non-empty, timestamps are ordered
 - **Acceptance criteria**:
@@ -169,9 +173,11 @@
 
 ### P2-T3: Audio metrics extraction
 
-- **Branch**: `feat/P2-T3-audio-metrics`
-- **Files**: `backend/services/audio_analysis.py`
-- **Description**: Extract speech metrics: WPM, filler count, pauses, pitch, intensity from audio + transcript.
+- **Branch**: `feat/P2-T3-audio-metrics` ✅ Committed 2026-11-10
+- **Commit**: `793cf13`
+- **Files**: `backend/services/metrics.py`
+- **Tests**: 24/24 passing
+- **Description**: Extract speech metrics from transcription segments: WPM, filler count, pauses, word count, sentence count, WPM classification.
 - **Tests required**:
   - `test_audio_analysis.py`: calculate WPM from word count/duration, detect fillers from transcript, find pauses from audio silence
 - **Acceptance criteria**:
