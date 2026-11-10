@@ -48,8 +48,15 @@
 
 ### P1-T2: Frontend project scaffold (Next.js + shadcn/ui)
 
-- **Branch**: `feat/P1-T2-frontend-scaffold`
-- **Files**: `next.config.*`, `package.json`, `tailwind.config.*`, `tsconfig.json`
+- **Branch**: `feat/P1-T2-frontend-scaffold` ✅ Merged 2026-11-10
+- **Tests**: lint passes, scaffold test passes
+- [x] Next.js 14 + TypeScript + Tailwind CSS + shadcn/ui scaffold
+- [x] Supabase browser client with createBrowserClient
+- [x] Login and register pages with client-side auth forms
+- [x] Home page with Sign In / Register navigation
+- [x] ESLint configured, lint passes
+- [x] Vitest test for scaffold structure
+- **Files**: `frontend/package.json`, `frontend/next.config.mjs`, `frontend/tailwind.config.js`, `frontend/tsconfig.json`, `frontend/src/app/`, `frontend/src/utils/supabase/client.ts`, `frontend/src/lib/utils.ts`
 - **Description**: Scaffold Next.js app with App Router, Tailwind, shadcn/ui, Supabase client.
 - **Tests required**:
   - `app/page.test.tsx`: renders home page, links to sign-in
@@ -494,8 +501,8 @@
 
 ## Task Progress
 
-- [ ] P1-T1: Backend scaffold + Supabase config
-- [ ] P1-T2: Frontend scaffold (Next.js + shadcn/ui)
+- [x] P1-T1: Backend scaffold + Supabase config (feat/P1-T1-backend-scaffold, merged 2026-11-10)
+- [x] P1-T2: Frontend scaffold (Next.js + shadcn/ui) (feat/P1-T2-frontend-scaffold, merged 2026-11-10)
 - [ ] P1-T3: Database migrations + seed data
 - [ ] P1-T4: Auth middleware + JWT verification
 - [ ] P1-T5: Health check endpoint
