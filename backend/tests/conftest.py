@@ -1,4 +1,5 @@
 """Shared fixtures and configuration for tests."""
+
 import os
 
 # Ensure required env vars are set for tests

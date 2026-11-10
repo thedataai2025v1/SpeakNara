@@ -1,36 +1,50 @@
-"""Environment configuration."""
+"""Environment configuration via pydantic-settings."""
+
 from __future__ import annotations
 
-import os
 from pathlib import Path
 
-from dotenv import load_dotenv
-
-# Load .env from project root (two levels up from this file)
-_env_file = Path(__file__).resolve().parent.parent.parent / ".env"
-if _env_file.exists():
-    load_dotenv(_env_file)
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 # ── Application ──────────────────────────────────────────────
-APP_NAME: str = os.getenv("APP_NAME", "SpeakNara")
-APP_VERSION: str = os.getenv("APP_VERSION", "0.1.0")
-DEBUG: bool = os.getenv("DEBUG", "false").lower() in ("true", "1", "yes")
 
-# ── Euron API (OpenAI-compatible) ────────────────────────────
-EURI_API_KEY: str = os.getenv("EURI_API_KEY", "")
-LLM_MODEL: str = os.getenv("LLM_MODEL", "claude-sonnet-5-5")
-LLM_BASE_URL: str = os.getenv("LLM_BASE_URL", "https://api.euron.one/api/v1/euri")
 
-# ── Supabase ─────────────────────────────────────────────────
-SUPABASE_URL: str = os.getenv("SUPABASE_URL", "")
-SUPABASE_SERVICE_KEY: str = os.getenv("SUPABASE_SERVICE_KEY", "")
-SUPABASE_JWT_SECRET: str = os.getenv("SUPABASE_JWT_SECRET", "")
+class Settings(BaseSettings):
+    """All config loaded from env / .env with typed defaults."""
 
-# ── Frontend (CORS) ──────────────────────────────────────────
-FRONTEND_URL: str = os.getenv("FRONTEND_URL", "http://localhost:3000")
-CORS_ORIGINS: list[str] = [
-    FRONTEND_URL,
-    # Render will set the production URL via env
-]
-if production_frontend := os.getenv("PRODUCTION_FRONTEND_URL"):
-    CORS_ORIGINS.append(production_frontend)
+    model_config = SettingsConfigDict(
+        env_file=str(Path(__file__).resolve().parent.parent.parent / ".env"),
+        env_file_encoding="utf-8",
+        case_sensitive=False,
+        extra="ignore",
+    )
+
+    # ── Application ────────────────────────────────────────
+    app_name: str = "SpeakNara"
+    app_version: str = "0.1.0"
+    debug: bool = False
+
+    # ── Euron API (OpenAI-compatible) ──────────────────────
+    euri_api_key: str = ""
+    llm_model: str = "claude-sonnet-5-5"
+    llm_base_url: str = "https://api.euron.one/api/v1/euri"
+
+    # ── Supabase ───────────────────────────────────────────
+    supabase_url: str = ""
+    supabase_service_key: str = ""
+    supabase_jwt_secret: str = ""
+
+    # ── Frontend (CORS) ────────────────────────────────────
+    frontend_url: str = "http://localhost:3000"
+    production_frontend_url: str = ""
+
+    @property
+    def cors_origins(self) -> list[str]:
+        origins = [self.frontend_url]
+        if self.production_frontend_url:
+            origins.append(self.production_frontend_url)
+        return origins
+
+
+# Singleton instance
+settings = Settings()

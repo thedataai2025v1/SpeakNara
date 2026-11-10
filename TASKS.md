@@ -26,7 +26,13 @@
 
 ### P1-T1: Backend project scaffold + Supabase config
 
-- **Branch**: `feat/P1-T1-backend-scaffold`
+- **Branch**: `feat/P1-T1-backend-scaffold` ✅ Merged 2026-11-10
+- **Tests**: 6/6 passing (ruff + black clean)
+- [x] Backend project scaffold with pydantic-settings
+- [x] Supabase client module (mocked tests)
+- [x] Health endpoint
+- [x] Tests: settings, health, supabase client
+- [x] Code quality: ruff + black
 - **Files**: `backend/pyproject.toml`, `backend/core/settings.py`, `.env.example`
 - **Description**: Scaffold the FastAPI backend project. Configure Supabase client, connection pooling, environment settings.
 - **Tests required**:
