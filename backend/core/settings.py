@@ -34,6 +34,9 @@ class Settings(BaseSettings):
     supabase_service_key: str = ""
     supabase_jwt_secret: str = ""
 
+    # ── Database ────────────────────────────────────────────
+    database_url: str = "sqlite:///./speaknara.db"
+
     # ── Frontend (CORS) ────────────────────────────────────
     frontend_url: str = "http://localhost:3000"
     production_frontend_url: str = ""
