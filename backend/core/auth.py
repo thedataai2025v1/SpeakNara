@@ -48,3 +48,25 @@ def get_user_from_payload(payload: dict[str, Any]) -> dict[str, Any]:
         "role": role,
         "raw_payload": payload,
     }
+
+
+# ---------------------------------------------------------------------------
+# Helpers for tests
+# ---------------------------------------------------------------------------
+
+_test_secret = "test-secret"  # noqa: S105
+
+
+def _make_token(payload: dict, secret: str | None = None) -> str:
+    """Create a signed JWT for testing.
+
+    Adds standard claims (`exp`, `iat`, `sub`) if not present.
+    Uses the configured supabase_jwt_secret so tokens pass decode_jwt.
+    """
+    import time
+
+    payload = {"iat": time.time(), "exp": time.time() + 3600, **payload}
+    if "sub" not in payload:
+        payload["sub"] = "550e8400-e29b-41b4-941e-001a00000001"
+    secret = secret or settings.supabase_jwt_secret
+    return jwt.encode(payload, secret, algorithm=ALGORITHM)

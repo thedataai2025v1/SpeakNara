@@ -37,4 +37,10 @@ app.add_middleware(
 )
 
 # Routers
-app.include_router(health.router, prefix="/health", tags=["Health"])
+app.include_router(health.router, prefix="/api/v1/health", tags=["Health"])
+
+
+@app.get("/health")
+async def readiness_check() -> dict[str, str]:
+    """Simple readiness probe for CI/CD — no auth required."""
+    return {"status": "ok", "version": settings.app_version}
