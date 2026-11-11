@@ -42,6 +42,9 @@ The app runs at **http://localhost:3000**.
 | `/table-topics` | Table Topics | Random topic + 3 keywords, 60 s limit |
 | `/storytelling` | Storytelling | Random theme + 3 keywords, 90 s limit |
 | `/impromptu` | Impromptu | Your own keywords + custom time limit (30–180 s) |
+| `/prepared-speech` | Prepared Speech | Paste speech text, record delivery, get feedback |
+| `/youtube` | YouTube Evaluation | Evaluate a YouTube video with AI feedback |
+| `/history` | Session History | Review all your past speaking evaluations |
 
 ### 4. Test backend endpoints (from a third terminal)
 
@@ -51,6 +54,12 @@ curl -X POST http://localhost:8000/api/v1/table-topics/generate
 
 # Storytelling
 curl -X POST http://localhost:8000/api/v1/storytelling/generate
+
+# Prepared Speech
+curl -X POST http://localhost:8000/api/v1/prepared-speech/generate
+
+# YouTube (requires a video URL in the body)
+# curl -X POST http://localhost:8000/api/v1/youtube/transcribe -H "Content-Type: application/json" -d '{"url": "https://www.youtube.com/watch?v=..."}'
 
 # Health check
 curl http://localhost:8000/health

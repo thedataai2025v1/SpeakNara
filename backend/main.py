@@ -7,7 +7,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.api.endpoints import audio_upload, health, storytelling, table_topics
+from backend.api.endpoints import audio_upload, health, prepared_speech, storytelling, table_topics, youtube
 from backend.core.settings import settings
 
 
@@ -41,6 +41,8 @@ app.include_router(health.router, prefix="/api/v1/health", tags=["Health"])
 app.include_router(audio_upload.router, prefix="/api/v1/audio", tags=["Audio"])
 app.include_router(table_topics.router, prefix="/api/v1/table-topics", tags=["Table Topics"])
 app.include_router(storytelling.router, prefix="/api/v1/storytelling", tags=["Storytelling"])
+app.include_router(prepared_speech.router, prefix="/api/v1/prepared-speech", tags=["Prepared Speech"])
+app.include_router(youtube.router, prefix="/api/v1/youtube", tags=["YouTube"])
 
 
 @app.get("/health")
