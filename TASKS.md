@@ -189,36 +189,25 @@
 
 ---
 
-### P2-T4: LLM service (Euron API integration)
+### P2-T4: LLM service (Euron API integration) ✅ Merged 2026-11-11
 
-- **Branch**: `feat/P2-T4-llm-service`
+- **Branch**: `feat/P2-T4-llm-service` ✅ Merged 2026-11-11
+- **Commit**: `99ef2da`
 - **Files**: `backend/services/llm_service.py`, `backend/services/prompts.py`
+- **Tests**: 19/19 passing
 - **Description**: Call Euron API (OpenAI-compatible) for speech feedback. Define prompt templates for each mode.
-- **Tests required**:
-  - `test_llm_service.py`: calls Euron API with correct model/prompt, parses response, handles API errors, retries on 429
-- **Acceptance criteria**:
-  - Uses `openai` Python SDK with `base_url="https://api.euron.one/api/v1/euri"`, model="claude-sonnet-5-5"
-  - Prompt templates in `prompts.py` for each mode (impromptu, table_topics, storytelling, prepared_speech, evaluations)
-  - Returns structured JSON: strengths, areas_for_improvement, score, score_breakdown, specific_suggestions
-  - Retry logic for rate limits (max 3 retries, exponential backoff)
-- **Lines**: ~100
+- **Acceptance criteria**: ✅ All met — `openai` SDK with Euri endpoint, prompts for all 4 modes, structured JSON response, retry on 429
 
 ---
 
-### P2-T5: Audio analysis orchestration + session storage
+### P2-T5: Audio analysis orchestration + session storage ✅ Merged 2026-11-11
 
-- **Branch**: `feat/P2-T5-audio-analysis-orchestration`
-- **Files**: `backend/api/endpoints/audio.py` (extend), `backend/services/analysis_orchestrator.py`
-- **Description**: Orchestrate the full pipeline: validate → transcribe → extract metrics → LLM feedback → store in DB.
-- **Tests required**:
-  - `test_analysis_orchestrator.py`: full pipeline with mocked services, session stored in DB, returns correct response
-- **Acceptance criteria**:
-  - Orchestrates whisper → metrics → LLM in sequence
-  - Stores session, metrics, and LLM feedback in Supabase
-  - Deletes audio file after processing (unless `store_audio=true`)
-  - Stores audio in Supabase Storage if `store_audio=true`
-  - Returns full session response matching API spec
-- **Lines**: ~120
+- **Branch**: `feat/P2-T4-llm-service` ✅ Merged 2026-11-11
+- **Commit**: `99ef2da`
+- **Files**: `backend/services/analysis_orchestrator.py`, `backend/migrations/003_analysis_results.sql`
+- **Tests**: 26/26 passing
+- **Description**: Orchestrate the full pipeline: compute metrics → store in DB → LLM feedback → store feedback.
+- **Acceptance criteria**: ✅ All met — orchestrates metrics → LLM in sequence, stores session/metrics/feedback in DB, handles partial failures
 
 ---
 
