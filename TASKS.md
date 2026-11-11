@@ -527,6 +527,7 @@
 - [ ] P6-T2: Rate limiting
 - [ ] P6-T3: Vercel deployment config
 - [ ] P6-T4: Render deployment config
+- [~] E2E: Playwright e2e test setup (feat/P3-phase-completion, 2026-11-11, 10 specs written, 22/32 tests fail — pages crash with runtime errors, needs debugging)
 - [ ] P6-T5: Error handling + logging
 - [ ] P6-T6: Session detail page
  
