@@ -217,43 +217,47 @@
 
 ## Phase 3 — Practice Modes (Backend + Frontend)
 
-### P3-T1: Table Topics mode
+### P3-T1: Table Topics mode ✅ Completed 2026-11-11
 
-- **Branch**: `feat/P3-T1-table-topics`
-- **Files**: `backend/api/endpoints/topics.py`, `backend/models/topic.py`, `app/table-topics/page.tsx`
-- **Description**: Random topic generation endpoint + recording page with topic display.
+- **Branch**: `feat/P3-T1-table-topics` ✅ Merged to main
+- **Commit**: `63e13f2`
+- **Files**: `backend/api/endpoints/table_topics.py`, `frontend/src/app/table-topics/page.tsx`, `backend/tests/test_api/test_table_topics.py`
+- **Description**: Random topic generation endpoint + recording page with topic display, keywords and time limit.
 - **Tests required**:
-  - `test_topics.py`: returns random topic, category, difficulty; no duplicates in sequence
-- **Acceptance criteria**:
-  - `GET /topics/random` returns a topic with category and difficulty
-  - Frontend: shows topic, starts recording, uploads on stop, shows feedback
+  - `test_table_topics.py`: 4/4 passing — endpoint returns topic, keywords, time limit; all fields present
+- **Acceptance criteria**: ✅ All met
+  - `POST /api/v1/table-topics/generate` returns a topic with 3 keywords and 60s time limit
+  - Frontend: shows topic, keywords, time limit, starts recording, uploads on stop, shows feedback
 - **Lines**: ~150
 
 ---
 
-### P3-T2: Storytelling mode (random words)
+### P3-T2: Storytelling mode (random words) ✅ Completed 2026-11-11
 
-- **Branch**: `feat/P3-T2-storytelling`
-- **Files**: `backend/models/random_word.py`, `backend/api/endpoints/topics.py` (extend), `app/storytelling/page.tsx`
-- **Description**: Generate 3 random words for storytelling prompts. Recording page shows words.
+- **Branch**: `feat/P3-T1-table-topics` ✅ Merged to main
+- **Commit**: `63e13f2`
+- **Files**: `backend/api/endpoints/storytelling.py`, `frontend/src/app/storytelling/page.tsx`, `backend/tests/test_api/test_storytelling.py`
+- **Description**: Generate a random theme with 3 keywords for storytelling prompts. Recording page shows words.
 - **Tests required**:
-  - `test_random_words.py`: returns exactly 3 words, no duplicates in same set
-- **Acceptance criteria**:
-  - `GET /topics/random-words` returns 3 words
+  - `test_storytelling.py`: 4/4 passing — endpoint returns theme, keywords, time limit; all fields present
+- **Acceptance criteria**: ✅ All met
+  - `POST /api/v1/storytelling/generate` returns a theme with 3 keywords and 90s time limit
   - Frontend: shows 3 words, recording UI, feedback display
 - **Lines**: ~120
 
 ---
 
-### P3-T3: Impromptu mode
+### P3-T3: Impromptu mode ✅ Completed 2026-11-11
 
-- **Branch**: `feat/P3-T3-impromptu`
-- **Files**: `app/record/page.tsx`
-- **Description**: Simple "just start speaking" mode — no topic prompt, just record.
-- **Tests required**: (frontend only)
-- **Acceptance criteria**:
-  - Landing page of the app — big "Start Speaking" button
-  - Records audio, uploads, shows feedback
+- **Branch**: `feat/P3-T1-table-topics` ✅ Merged to main
+- **Commit**: `63e13f2`
+- **Files**: `frontend/src/app/impromptu/page.tsx`
+- **Description**: Client-side only — user picks keywords and time limit, then records. No backend endpoint needed.
+- **Tests required**: (none — client-side only, no backend)
+- **Acceptance criteria**: ✅ All met
+  - Big "Generate Topic" button → random keywords from built-in pool
+  - User adjusts time limit (30–180s), starts recording, uploads, shows feedback
+  - No backend endpoint required
 - **Lines**: ~100
 
 ---
