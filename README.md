@@ -17,6 +17,8 @@ AI-powered Lak public speaking coach, similar to Yoodli.
 
 ```powershell
 cd backend
+python -m venv .venv                  # first time only
+.\.venv\Scripts\Activate.ps1          # activate venv (Windows)
 pip install -r requirements.txt        # first time only
 python -m uvicorn main:app --reload --port 8000
 ```
@@ -68,13 +70,14 @@ curl http://localhost:8000/health
 ### 5. Run automated tests
 
 ```powershell
-# Backend
+# Backend (activate venv first: `.\.venv\Scripts\Activate.ps1`)
 cd backend
 python -m pytest -v
 
-# Frontend (lint)
+# Frontend (lint + e2e)
 cd frontend
 npm run lint
+npx playwright test                   # e2e tests (requires `npx playwright install chromium` first)
 ```
 
 ---
